@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表白</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            background: url("img/11.jpg");
+            background-size: cover;
+        }
+        .top{
+            width: 400px;
+            height: 100px;
+            margin: 60px auto;
+            font-size: 30px;
+            color: #ffffff;
+        }
+        .box{
+            width: 310px;
+            height: 310px;
+            margin: auto;
+            perspective: 800px;
+        }
+        .box .pic{
+            position: relative;
+            transform-style: preserve-3d;
+            animation: play 10s linear infinite;
+        }
+        .box ul li{
+            list-style: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        @keyframes play {
+
+            from{
+                transform: rotateY(0deg);
+            }
+            to{
+                transform: rotateY(360deg);
+            }
+        }
+        #text{
+            width: 500px;
+            height: 200px;
+            color: #6fade1;
+            margin: auto;
+            font-size: 24px;
+
+        }
+    </style>
+</head>
+<body>
+<!--顶部开始时-->
+<div class="top">
+    <marquee behavior="alternate" direction="">子非鱼，但得吾爱。</marquee>
+</div>
+
+<!--轮播盒子-->
+<div class="box">
+    <div class="pic">
+        <ul>
+            <li><img src="img/1.png" alt=""></li>
+            <li><img src="img/2.png" alt=""></li>
+            <li><img src="img/3.png" alt=""></li>
+            <li><img src="img/4.png" alt=""></li>
+            <li><img src="img/5.png" alt=""></li>
+            <li><img src="img/6.png" alt=""></li>
+        </ul>
+    </div>
+</div>
+<div id="text"></div>
+<embed src="./music/不仅仅是喜欢.mp3" hidden="true">
+</body>
+</html>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/snow.js"></script>
+<script type="text/javascript">
+    $(".pic ul li").each(function(i){
+        var deg = 360 / $(".pic ul li").size();
+        $(this).css({"transform":"rotateY("+deg * i+"deg) translateZ(216px)"});
+
+        $.fn.snow({
+            minSize:10,
+            maxSize:15,
+            newOn:500,
+            flakeColor:"#fff"
+        });
+    });
+
+    var i = 0;
+    var str="能够遇见你是我最大的幸运，有了你生活变得丰富多彩，有了你，世界变得如此迷人；你是我的世界，我的世界是你，对我来说，不是在最美好的时光遇见了你，而是遇见你后都是最美好的时光！";
+
+    window.onload = function typing(){
+
+        var mydiv = document.getElementById("text");
+        mydiv.innerHTML += str.charAt(i);
+        i++;
+        var id = setTimeout(typing,100);
+        if(i == str.length){
+            clearTimeout(id);
+        }
+    }
+</script>

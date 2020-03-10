@@ -1,0 +1,58 @@
+/*
+绗洓瀛ｉ瓟楝艰缁冪彮CSS Reset
+鐞嗗康锛�1. reset 鐨勭洰鐨勪笉鏄竻闄ゆ祻瑙堝櫒鐨勯粯璁ゆ牱寮忥紝杩欎粎鏄儴鍒嗗伐浣溿�傛竻闄ゅ拰閲嶇疆鏄揣瀵嗕笉鍙垎鐨勩��
+      2. reset 鐨勭洰鐨勪笉鏄榛樿鏍峰紡鍦ㄦ墍鏈夋祻瑙堝櫒涓嬩竴鑷达紝鑰屾槸鍑忓皯榛樿鏍峰紡鏈夊彲鑳藉甫鏉ョ殑闂銆�
+      3. reset 鎻愪緵涓�濂楅�傜敤浜�99%鐨勭綉绔欑殑鍩虹鏍峰紡銆�
+*/
+
+/** 娓呴櫎鍐呭杈硅窛 **/
+body, div, p, h1, h2, h3, h4, h5, h6, blockquote,  /* structural elements 缁撴瀯鍏冪礌 */
+dl, dt, dd, ul, ol, li, /* list elements 鍒楄〃鍏冪礌 */
+pre,  /* text formatting elements 鏂囨湰鏍煎紡鍏冪礌 */
+form, fieldset, legend, button, input, textarea,  /* form elements 琛ㄥ崟鍏冪礌 */
+table,th,td /* table elements 琛ㄦ牸鍏冪礌 */{
+    margin:0;
+    padding:0;
+}
+
+body,
+button, input, select, textarea /* for ie */ {
+    font: 12px/24px Arial, 'Microsoft Yahei',"瀹嬩綋", sans-serif;
+}
+/*h1, h2, h3, h4, h5, h6 { font-size: 100%; }*/
+address, cite, em, i { font-style: normal; } /* 灏嗘枩浣撴壎姝� */
+small { font-size: 12px; } /* 灏忎簬 12px 鐨勪腑鏂囧緢闅鹃槄璇伙紝璁� small 姝ｅ父鍖� */
+
+/** 閲嶇疆鍒楄〃鍏冪礌 **/
+li { list-style: none; }
+
+/** 閲嶇疆鏂囨湰鏍煎紡鍏冪礌 **/
+a { text-decoration: none; }
+a:hover { text-decoration: none; }
+
+/** 閲嶇疆琛ㄥ崟鍏冪礌 **/
+legend { color: #000; } /* for ie6 */
+fieldset, img { border: 0; } /* img 鎼溅锛氳a閾炬帴閲岀殑 img 鏃犺竟妗� */
+button, input, select, textarea { font-size: 100%; line-height:normal; } /* 浣垮緱琛ㄥ崟鍏冪礌鍦� ie 涓嬭兘缁ф壙瀛椾綋澶у皬 */
+
+/** 閲嶇疆琛ㄦ牸鍏冪礌 **/
+table{ border-collapse: collapse; border-spacing: 0; }
+input[type="button"],input[type="submit"],input[type="reset"]{cursor:pointer;}
+
+/* ie6 7 8(q) bug  */
+iframe{
+    display:block;
+}
+
+/* 娓呮诞鍔� */
+.clearfix:after {
+    visibility:hidden;
+    display:block;
+    font-size:0;
+    content:" ";
+    clear:both;
+    height:0;
+}
+.clearfix {
+    zoom:1; /* for IE6 IE7 */
+}
