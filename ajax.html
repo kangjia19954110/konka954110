@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 封装
+    document.onclick = function(){
+        var url = "http://localhost/ajax/get-post.php";
+        ajax({
+            success:function(res){
+                console.log(res);
+            },//成功的时候
+            url:url,//属性名、变量
+            type:'get',//类型
+            data:"user=admin&pass = 123"//发送数据
+        });
+    }
+
+    function ajax(ops) {
+
+        //先处理默认属性
+        ops.type = ops.type || "get";//默认ops是get
+        ops.data = ops.data || "";
+        //根据当前的请求方式，决定是否需要拼接数据，处理url;
+        if(ops.type == "get"){
+            let t = new Date().getTime();
+            ops.url = ops.url + "? qft=" + t +"&" + ops.data;
+        }
+        //创建对象
+        var xhr = new XMLHttpRequest();
+        //开启请求
+        xhr.open(ops.type,ops.url);
+        //根据类型决定send的内容及内容的数据格式
+        if(ops.type == "get"){
+            xhr.send();
+        }else{
+            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            xhr.send(ops.data);
+        }
+        //开启监听
+        .xhr.onreadystatechange = function () {
+
+            if(xhr.readyState === 4 && xhr.status === 200){
+                //执行回掉函数，取出数据
+                ops.success(xhr.responseText);
+            }
+        }
+    }
+</script>
+</body>
+</html>

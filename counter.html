@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counter</title>
+    <style type="text/css">
+    	table{
+    		margin: 15px auto;
+    		font-size: 22px;
+    		border:5px outset orange;
+    	}
+    	#tab-1,#tab-2,#tab-3{
+    		border:3px outset rgba(155,10,10,0.3);
+    	}
+    	input{
+    		outline: none;
+    		box-shadow: 5px 5px 2px rgba(100,100,100,0.8) inset;
+    	}
+    	#txtnum{
+    		text-align: right;
+    		height: 50px;
+    		width: 100%;
+    		background: #fff;
+    		font-size: 22px;
+    	}
+    	td{
+    		padding: 5PX;
+    		background: #CCC;
+    	}
+    	[type=button]{
+    		width: 60px;
+    		height: 40px;
+    		border-radius: 5px;
+    		background: #fff;
+    		box-shadow: 5px 3px 2px rgba(100,100,100,0.6) inset;
+    	}
+    </style>
+</head>
+<body>
+<!-- 主表设计 -->
+<table id="main" cellspacing="0">
+    <tr>
+        <td colspan="2">
+        	<input type="text" id="txtnum" value="0" name="">
+        </td>
+        <td>
+        	<table id="tab-1">
+        		<tr>
+        			<td><input type="button" id="cc" value="清除" onclick="txtnum.value='0';result=0" name=""></td>
+        			<td><input type="button" id="tg" value="退格" onclick="backspace()" name=""></td>
+        		</tr>
+        	</table>
+        </td>
+       <!--  <td></td> -->
+    </tr>
+    <tr>
+        <td>
+        	<table id="tab-2">
+        		<tr>
+        			<td><input type="button" id="sin" value="sin" onclick="math('sin')" name=""></td>
+        			<td><input type="button" id="cos" value="cos" onclick="math('cos')" name=""></td>
+        			<td><input type="button" id="tan" value="tan" onclick="math('tan')" name=""></td>
+        		</tr>
+        		<tr>
+        			<td><input type="button" id="asin" value="asin" onclick="math('asin')" name=""></td>
+        			<td><input type="button" id="acos" value="acos" onclick="math('acos')" name=""></td>
+        			<td><input type="button" id="atan" value="atan" onclick="math('atan')" name=""></td>
+        		</tr>
+        		<tr>
+        			<td><input type="button" id="PI" value="PI" onclick="math('PI')" name=""></td>
+        			<td><input type="button" value="1/x" onclick="math('1/x')" name=""></td>
+        			<td><input type="button" value="exp" onclick="math('exp')" name=""></td>
+        		</tr>
+        		<tr>
+        			<td><input type="button" value="lnx" onclick="math('lnx')" name=""></td>
+        			<td><input type="button" value="lgx" onclick="math('lgx')" name=""></td>
+        			<td><input type="button" value="n!" onclick="math('n!')" name=""></td>
+        		</tr>
+        	</table>
+        </td>
+        <td>
+        	<table id="tab-3">
+        		<tr>
+        			<td><input type="button" id="" value="7" onclick="num('7')" name=""></td>
+        			<td><input type="button" id="" value="8" onclick="num('8')" name=""></td>
+        			<td><input type="button" id="" value="9" onclick="num('9')" name=""></td>
+        		</tr>
+        		<tr>
+        			<td><input type="button" id="" value="4" onclick="num('4')" name=""></td>
+        			<td><input type="button" id="" value="5" onclick="num('5')" name=""></td>
+        			<td><input type="button" id="" value="6" onclick="num('6')" name=""></td>
+        		</tr>
+        		<tr>
+        			<td><input type="button" id="" value="1" onclick="num('1')" name=""></td>
+        			<td><input type="button" id="" value="2" onclick="num('2')" name=""></td>
+        			<td><input type="button" id="" value="3" onclick="num('3')" name=""></td>
+        		</tr>
+        		<tr>
+        			<td><input type="button" value="0" onclick="num('0')" name=""></td>
+        			<td><input type="button" value="." onclick="decimal()" name=""></td>
+        			<td><input type="button" value="=" onclick="compute('=')" name=""></td>
+        		</tr>
+        	</table>
+        </td>
+        <td>
+        	<table id="tab-3">
+        		<tr>
+        			<td><input type="button" id="" value="+" onclick="compute('+')" name=""></td>
+        			<td><input type="button" id="" value="取整" onclick="math('i')" name=""></td>
+        		</tr>
+        		<tr>
+        			<td><input type="button" id="" value="-" onclick="compute('-')" name=""></td>
+        			<td><input type="button" id="" value="取余" onclick="compute('%')" name=""></td>
+        		</tr>
+        		<tr>
+        			<td><input type="button" id="" value="*" onclick="compute('*')" name=""></td>
+        			<td><input type="button" id="" value="x^y" onclick="compute('x^y')" name=""></td>
+        		</tr>
+        		<tr>
+        			<td><input type="button" id="" value="" onclick="compute('')" name=""></td>
+        			<td><input type="button" id="" value="+/-" onclick="reverse()" name=""></td>
+        		</tr>
+        	</table>
+        </td>
+    </tr>				
+</table>
+</body>
+</html>
+<script type="text/javascript">
+	var Boo = false;
+	var result = 0;
+	var ope;
+
+	function $(x){
+		return document.getElementById(x);
+	}
+
+	function decimal(){
+		var txt = $('txtnum');
+		if(Boo){
+			txt.value = '0'
+		}else{
+			if(txt.value.indexOf('.') == -1){
+				txt.value += '.';
+			}
+		}
+		Boo = false;
+	}
+
+	function num(Num){
+		var txt = $('txtnum');
+		if(Boo){
+			txt.value = Num;
+			Boo = false;
+		}else{
+			if(txt.value == '0'){
+				txt.value = Num
+			}else{
+				txt.value += Num;
+			}
+		}
+	}
+
+	function compute(op){
+		var onum = $('txtnum').value;
+		if(onum == ''){
+			onum = 0
+		}
+		Boo = true;
+		switch(ope){
+			case '+':
+			result += parseFloat(onum);break;
+			case '-':
+			result -= parseFloat(onum);break;
+			case '*':
+			result *= parseFloat(onum);break;
+			case '':
+			result /= parseFloat(onum);break;
+			case '=':
+			result = parseFloat(onum);break;
+			case '%':
+			result %= onum;break;
+			case 'x^y':
+			result = Math.pow(result,onum);break;
+			default:result = parseFloat(onum);
+		}
+		$('txtnum').value = result;
+		ope = op;
+	}
+
+	function math(op){
+		var onum = $('txtnum').value;
+		if(onum == ''){
+			alert('数据不能为空')
+		};
+		Boo = true;
+		with(Math){
+			switch(op){
+				case 'sin':result = sin(onum);break;
+				case 'cos':result = cos(onum);break;
+				case 'tan':result = tan(onum);break;
+				case 'asin':
+				result = asin(onum);break;
+				case 'acos':
+				result = acos(onum);break;
+				case 'atan':
+				result = atan(onum);break;
+				case 'PI':
+				result = PI;break;
+				case '1/x':
+				result = 1 / onum;break;
+				case 'exp':
+				result = exp(onum);break;
+				case 'lnx':
+			    result = log(onum);break;
+			    case 'lgx':
+			    result = log(onum) / log(10);break;
+			    case 'i':
+			    result = floor(onum);break;
+			    case 'n!':
+			    result = jc(onum);break;
+			    default:result = parseFloat(onum);
+			}
+		}
+		$('txtnum').value = result;
+	}
+	function jc(a){
+		if(a== 1){
+			return 1;
+
+		}else{
+			return jc(a-1) * a;
+		}
+	}
+
+	function reverse(){
+		var Num1 = $('txtnum').value;
+		if(Num1 == ''){
+			alert('数据不能为空');
+		}else{
+			$('txtnum').value *= -1;
+		}
+	}
+
+	function backspace(){
+		var txt = $('txtnum');
+		txt.value = txt.value.substring(0,txt.value.length - 1);
+		if(txt.value == ''){
+			txt.value = 0;
+		}
+	}
+</script>

@@ -1,0 +1,180 @@
+@charset "utf-8";
+
+/* 代码整理：懒人之家 */
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+form,
+img,
+dl,
+dt,
+dd,
+table,
+th,
+td,
+blockquote,
+fieldset,
+div,
+strong,
+label,
+em {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+input,
+button {
+    margin: 0;
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+body {
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    margin: 0 auto;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #c00;
+    text-decoration: underline;
+}
+
+#infodiv {
+    POSITION: fixed
+}
+
+.tabBox {
+    width: 392px;
+    height: 224px;
+    overflow: hidden;
+}
+
+.foot_msg_box {
+    PADDING-RIGHT: 0px;
+    DISPLAY: none;
+    PADDING-LEFT: 0px;
+    Z-INDEX: 9999;
+    RIGHT: 0px;
+    PADDING-BOTTOM: 0px;
+    OVERFLOW: hidden;
+    BOTTOM: 0px;
+    PADDING-TOP: 0px;
+    POSITION: absolute
+}
+
+.foot_msg_tp {
+    PADDING-RIGHT: 1px;
+    PADDING-LEFT: 0px;
+    Z-INDEX: -1;
+    FLOAT: left;
+    PADDING-BOTTOM: 0px;
+    MARGIN: 0px;
+    OVERFLOW: hidden;
+    WIDTH: 393px;
+    PADDING-TOP: 0px;
+    POSITION: relative;
+    HEIGHT: 290px;
+    TEXT-ALIGN: right
+}
+
+.foot_nav {
+    BACKGROUND: #848484;
+    WIDTH: 392px;
+    LINE-HEIGHT: 25px;
+    HEIGHT: 26px
+}
+
+.tabContainer UL LI {
+    FLOAT: left;
+    WIDTH: 98px;
+    TEXT-ALIGN: center
+}
+
+.tabContainer UL LI A {
+    FONT-SIZE: 12px;
+    COLOR: #ffffff
+}
+
+.tabContainer UL LI.current {
+    BACKGROUND: url(../images/nav_on11.gif) repeat-x;
+    COLOR: #2f2a05;
+    HEIGHT: 26px
+}
+
+.tabContainer UL LI.current A {
+    COLOR: #2f2a05;
+    TEXT-DECORATION: none
+}
+
+.foot_ad {
+    FLOAT: left
+}
+
+.foot_ad UL {
+    BORDER-RIGHT: #fff 1px solid;
+    BORDER-TOP: #fff 1px solid;
+    FLOAT: left;
+    MARGIN-LEFT: 2px;
+    BORDER-LEFT: #fff 1px solid;
+    BORDER-BOTTOM: #fff 1px solid
+}
+
+.foot_ad UL LI {
+    BORDER-RIGHT: #fff 1px solid;
+    BORDER-TOP: #fff 1px solid;
+    FLOAT: left;
+    BORDER-LEFT: #fff 1px solid;
+    BORDER-BOTTOM: #fff 1px solid
+}
+
+.foot_ad UL LI IMG {
+    VERTICAL-ALIGN: top;
+    WIDTH: 341px;
+    HEIGHT: 202px
+}
+
+.hd_tp IMG {
+    VERTICAL-ALIGN: top;
+    WIDTH: 392px;
+    HEIGHT: 224px
+}
+
+.foot_tel P {
+    FLOAT: left
+}
+
+.foot_msg_hide {
+    FLOAT: left;
+    WIDTH: 27px;
+    POSITION: relative;
+    HEIGHT: 290px
+}

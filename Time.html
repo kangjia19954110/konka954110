@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time</title>
+    <link rel="stylesheet" href="css/timer.css">
+</head>
+<body>
+<!--Math.atan2(y,x)接受两个参数x和y;-->
+<!--x指定点的x坐标的数字。-->
+<!--y制定点的y坐标的数字。-->
+<script type="text/javascript">
+    function isInt(n) {
+
+        return parseInt(n) === n;
+    }
+    function rotate(x,y,angle) {
+
+        var A,R,rad;
+        rad = (angle == 0 ? 270 : angle) * Math.PI / 180;
+        A = Math.atan2(y,x) + rad;
+        R = Math.sqrt(x*x + y * y);
+        return {
+            x : Math.cos(A) * R,
+            y : Math.sin(A) * R
+        };
+    }
+
+    function rotateElement(el,deg) {
+
+        el.style.transform = `rotate(${deg}deg)`;
+    }
+</script>
+
+
+<div class="clock">
+    <ul class="mark">
+        <script type="text/javascript">
+            {
+                let i = 0;
+                let html = '';
+                while(i < 60){
+                    let n = i / 5 % 12;
+                    n = n === 0 ? 12 : n;
+                    let bold = isInt(n);
+                    html +=`<li class="${bold ?'bold':''}" style="transform:translateY(250px) rotate(${i * 6}deg);"></li>`;
+                    i++;
+                }
+                document.write(html);
+            }
+        </script>
+    </ul>
+    <script type="text/javascript">
+        {
+            let angle = 30,
+                x = 110,
+                y = -190,
+                i = 1,
+                html = '';
+            html += `<div class="numbers" style="transform:translate(${x}px,${y}px);">${i}</div>`;
+            while(i++ < 12){
+                let pos = rotate(x,y,angle);
+                x = pos.x;
+                y = pos.y;
+                html += `<div class="numbers" style="transform:translate(${x}px,${y}px);">${i}</div>`;
+
+            }
+            document.write(html);
+        }
+    </script>
+<div class="time">
+    <div id="date"></div>
+    <div id="now"></div>
+    <div id="day"></div>
+</div>
+
+<div class="hour-hand" id="h"></div>
+<div class="minute-hand" id="m"></div>
+<div class="second-hand" id="s"></div>
+<div class="center"></div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    {
+        let f = (e,i) => (i != 0 && e < 10 ? '0' + e : e);
+        setInterval(() => {
+            let t = new Date();
+            rotateElement(h,t.getHours() * 30 + t.getMinutes() / 60 * 30);
+            rotateElement(m,t.getMinutes() * 6 + t.getSeconds() / 60 * 6);
+            rotateElement(s,t.getSeconds() * 6 + t.getMilliseconds() / 1000 * 6);
+            date.innerHTML  = [t.getFullYear(),t.getMonth() + 1,t.getDate()].map(f).join('-');
+            day.innerHTML = '星期' + '日一二三四五六'[t.getDay()];
+            now.innerHTML = [t.getHours(),t.getMinutes(),t.getSeconds()].map(f).join(':');
+        },1000 / 60);
+    }
+</script>
+
+<!--map()方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数返回的结果。-->
+<!--例如：-->
+<!--<script type="text/javascript">-->
+<!--const array1 = [1,4,9,16];-->
+<!--const map1 = array1.map(x => x *2);-->
+<!--console.log(map1);-->
+
+<!--Array[2,8,18,32]-->
+<!--</script>-->
